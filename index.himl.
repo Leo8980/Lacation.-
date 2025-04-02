@@ -1,0 +1,25 @@
+<script>
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(sendLocation, showError);
+        } else {
+            alert("Геолокация не поддерживается.");
+        }
+    }
+
+    function sendLocation(position) {
+        let lat = position.coords.latitude;
+        let lon = position.coords.longitude;
+        let token "7828958662:AAHpOrBZSZJxMA_M7OyqvHyGsQhUMmFIOdM"; 
+        let chat_id = "5512469464"; 
+        let url = https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=Местоположение: ${lat}, ${lon};
+        
+        fetch(url).then(() => {
+            alert("Местоположение отправлено!");
+        });
+    }
+
+    function showError(error) {
+        alert("Ошибка получения геолокации.");
+    }
+</script>
